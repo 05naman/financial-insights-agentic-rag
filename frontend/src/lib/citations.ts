@@ -64,7 +64,27 @@ const balanceBold = (text: string) =>
 
 export const cleanUnreadable = (text: string) =>
   balanceBold(text)
+    // some PDF fonts give the rupee sign as a backtick right before an amount: "` 27,14,715" -> "₹ 27,14,715"
+    .replace(/(^|[\s(])`\s?(?=\d)/g, '$1₹ ')
     // a table cell with nothing readable in it (e.g. a lost year heading) becomes a dash
     .replace(/\|(\s*)(\*\*)?\s*(?:\uFFFD\s*)+(\*\*)?(\s*)(?=\|)/g, '|$1—$4')
     // partly readable text keeps a small marker where characters are missing
     .replace(/\uFFFD+/g, '▯')
+
+const SENTENCE_BREAK = /(?<=[.!?])\s+(?=[A-Z0-9₹`])/
+
+/**
+ * A short quote from a prose passage: the sentence holding a figure from the answer, plus the one after it. Passages that are tables (or have no matching figure) are returned as null,
+ * because a table row without its header says little.
+ */
+export function excerptAround(text: string, figures: Set<string>): string | null {
+  if (/^\s*\|/m.test(text) || figures.size === 0) return null
+  const sentences = text.split(SENTENCE_BREAK).map((s) => s.trim()).filter(Boolean)
+  const hit = sentences.findIndex((s) => [...figures].some((f) => s.includes(f)))
+  if (hit < 0) return null
+  const start = hit
+  const end = Math.min(sentences.length, hit + 2)
+  if (start === 0 && end === sentences.length) return null
+  const quote = sentences.slice(start, end).join(' ')
+  return `${start > 0 ? '… ' : ''}${quote}${end < sentences.length ? ' …' : ''}`
+}

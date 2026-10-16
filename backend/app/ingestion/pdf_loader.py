@@ -44,6 +44,7 @@ _BOLD = re.compile(r"\*\*([^*|\n]*?)\*\*")
 _UNIT_RUPEE = re.compile(
     r"(?:\(\s*)?`?\bH`?\s*(?=crores?\b|lakhs?\b|millions?\b|billions?\b)", re.IGNORECASE
 )
+_BACKTICK_RUPEE = re.compile(r"(?<![`\w])`[ ]?(?=\d)")  # "` 27,14,715": the font's rupee sign
 _SPLIT_CAPITAL = re.compile(r"\b([B-HJ-Z]) ([a-z]{2,})\b")
 _WORD_RE = re.compile(r"[a-z]{4,}")
 _CAPS_RUN = re.compile(r"\b[A-Z]{1,6}(?: [A-Z]{1,6}){1,5}\b")  # e.g. "TOTAL IN COME"
@@ -75,6 +76,7 @@ def repair_markdown_artifacts(pages: list[PageContent]) -> list[PageContent]:
 
     - broken bold markers (`**Y **`)
     - a rupee sign read as "H" in unit lines: "(`H`crores)" -> "(₹ crores)"
+    - a rupee sign read as a backtick before an amount: "` 27,14,715" -> "₹ 27,14,715"
     - letter-spaced words ("Y ear", "N ote"): rejoined only when the joined word is common in this very
       document and the fragment after the capital is not itself a word."""
     vocab: Counter[str] = Counter()
@@ -118,6 +120,7 @@ def repair_markdown_artifacts(pages: list[PageContent]) -> list[PageContent]:
         text = _UNIT_RUPEE.sub(
             lambda m: "(₹ " if m.group(0).lstrip().startswith("(") else "₹ ", text
         )
+        text = _BACKTICK_RUPEE.sub("₹ ", text)
         text = _SPLIT_CAPITAL.sub(merge, text)
         out.append(PageContent(p.page, text))
     return out

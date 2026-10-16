@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { AgentStep, Citation } from '../types'
-import { figuresIn, linkifyCitations } from './citations'
+import { cleanUnreadable, excerptAround, figuresIn, linkifyCitations } from './citations'
 import { verdictOf } from './steps'
 
 const cite = (ticker: string, year: number, page: number): Citation => ({
@@ -73,5 +73,35 @@ describe('verdictOf', () => {
     expect(verdictOf([verify(false)], 'fine')).toBe('unverified')
     expect(verdictOf([verify(true)], 'text ⚠ warning')).toBe('unverified')
     expect(verdictOf([], 'fine')).toBe('none')
+  })
+})
+
+describe('cleanUnreadable rupee sign', () => {
+  it('turns a backtick before an amount into the rupee sign', () => {
+    expect(cleanUnreadable('rose to ` 27,14,715 crore')).toBe('rose to ₹ 27,14,715 crore')
+    expect(cleanUnreadable('NET PROFIT ` 67,347.4 crore')).toBe('NET PROFIT ₹ 67,347.4 crore')
+  })
+  it('leaves other backticks alone', () => {
+    expect(cleanUnreadable('use `code` here')).toBe('use `code` here')
+  })
+})
+
+describe('excerptAround', () => {
+  const text =
+    'rth was 14.56 per cent. Total Balance Sheet stood at 39,10,199 crore. Total Deposits rose to ` 27,14,715 crore from 23,79,786 crore. Savings grew by 5.3 per cent. CASA was 34.8 per cent. Advances stood at 26,19,609 crore.'
+  it('quotes the sentence with the figure and the one after it', () => {
+    const q = excerptAround(text, new Set(['27,14,715']))
+    expect(q).toBe(
+      '… Total Deposits rose to ` 27,14,715 crore from 23,79,786 crore. Savings grew by 5.3 per cent. …',
+    )
+  })
+  it('never starts in the middle of a sentence', () => {
+    expect(excerptAround(text, new Set(['26,19,609']))).toBe('… Advances stood at 26,19,609 crore.')
+    expect(excerptAround(text, new Set(['39,10,199']))?.startsWith('… Total Balance Sheet')).toBe(true)
+  })
+  it('returns null for tables, no match, or a passage that is already short', () => {
+    expect(excerptAround('| a | 1,000 |\n| b | 2,000 |', new Set(['1,000']))).toBeNull()
+    expect(excerptAround(text, new Set(['999,999']))).toBeNull()
+    expect(excerptAround('Revenue was 1,000 crore.', new Set(['1,000']))).toBeNull()
   })
 })

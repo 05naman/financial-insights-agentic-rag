@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { cleanUnreadable, linkifyCitations } from '../lib/citations'
+import { cleanUnreadable, excerptAround, figuresIn, linkifyCitations } from '../lib/citations'
 import { describeStep, verdictOf } from '../lib/steps'
 import type { AgentStep, ChatMessage } from '../types'
 import Alert from '../ui/Alert'
@@ -27,6 +27,12 @@ interface Props {
 }
 
 const LLM_DOWN = /language model is unavailable/i
+
+const preview = (text: string, figures: Set<string>) => {
+  const clean = cleanUnreadable(text)
+  const quote = excerptAround(clean, figures)?.replace(/^…\s*/, '') ?? clean
+  return quote.replace(/[|#*-]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120)
+}
 
 export default function NoteView({ note, activeKey, onCite, onRetry }: Props) {
   return (
@@ -76,6 +82,7 @@ function Answer({
     () => linkifyCitations(message.content, message.citations),
     [message.content, message.citations],
   )
+  const answerFigures = useMemo(() => figuresIn(message.content), [message.content])
   const steps = message.steps.length ? message.steps : note.steps
   const verdict = verdictOf(steps, message.content)
   const [copied, setCopied] = useState(false)
@@ -135,7 +142,7 @@ function Answer({
                       <span className="text-faint">·</span> page {f.citation.page}
                     </span>
                     <span className="block truncate text-[0.8rem] text-muted">
-                      {cleanUnreadable(f.citation.text).replace(/[|#*-]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120)}
+                      {preview(f.citation.text, answerFigures)}
                     </span>
                   </span>
                   <ChevronIcon width={16} height={16} className="mt-1 text-faint transition-transform group-hover:translate-x-0.5" />

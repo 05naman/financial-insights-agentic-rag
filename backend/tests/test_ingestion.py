@@ -167,6 +167,16 @@ def test_markdown_artifacts_are_repaired():
     assert "Y ear" not in out
 
 
+def test_backtick_rupee_before_an_amount_is_repaired():
+    from app.ingestion.pdf_loader import repair_markdown_artifacts
+    from app.ingestion.schemas import PageContent
+
+    text = "Deposits rose to ` 27,14,715 crore. NET PROFIT `67,347.4 crore. Use `code` here."
+    out = repair_markdown_artifacts([PageContent(1, text)])[0].text
+    assert "₹ 27,14,715 crore" in out and "₹ 67,347.4 crore" in out
+    assert "`code`" in out
+
+
 def test_repair_does_not_glue_real_words_or_touch_normal_text():
     from app.ingestion.pdf_loader import repair_markdown_artifacts
     from app.ingestion.schemas import PageContent

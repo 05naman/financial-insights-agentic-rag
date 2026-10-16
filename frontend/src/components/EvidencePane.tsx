@@ -1,5 +1,5 @@
-import { useEffect, useMemo } from 'react'
-import { figuresIn, hasUnreadable } from '../lib/citations'
+import { useEffect, useMemo, useState } from 'react'
+import { excerptAround, figuresIn, hasUnreadable } from '../lib/citations'
 import type { Footnote } from '../lib/citations'
 import IconButton from '../ui/IconButton'
 import { CloseIcon, CollapseIcon, ExpandIcon } from './Icons'
@@ -84,15 +84,35 @@ export default function EvidencePane({
               fine; check the original page if in doubt.
             </p>
           )}
-          <div className="mt-4 rounded-lg border border-line bg-raised p-4 shadow-card">
-            <MarkdownView markdown={c.text} variant="passage" highlight={figures} />
-          </div>
+          <Quote key={active.key} text={c.text} figures={figures} />
           <p className="mt-3 text-xs text-faint">
-            Wide tables scroll sideways. Figures that also appear in the answer are{' '}
+            {/^\s*\|/m.test(c.text) && 'Wide tables scroll sideways. '}Figures that also appear in the answer are{' '}
             <mark className="rounded bg-accent/25 px-0.5 text-inherit">highlighted</mark>.
           </p>
         </div>
       </div>
     </aside>
+  )
+}
+
+function Quote({ text, figures }: { text: string; figures: Set<string> }) {
+  const excerpt = useMemo(() => excerptAround(text, figures), [text, figures])
+  const [full, setFull] = useState(false)
+  const shown = excerpt && !full ? excerpt : text
+  return (
+    <>
+      <div className="mt-4 rounded-lg border border-line bg-raised p-4 shadow-card">
+        <MarkdownView markdown={shown} variant="passage" highlight={figures} />
+      </div>
+      {excerpt && (
+        <button
+          type="button"
+          onClick={() => setFull((v) => !v)}
+          className="mt-2 text-xs font-medium text-primary underline-offset-2 hover:underline"
+        >
+          {full ? 'Show only the key sentences' : 'Show the full passage'}
+        </button>
+      )}
+    </>
   )
 }
