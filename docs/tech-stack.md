@@ -11,7 +11,7 @@ Agentic RAG over annual-report PDFs. Python backend, React frontend, everything 
 | LLM | Groq (free, default), Gemini (free), Ollama (local), with fallback |
 | Database | SQLite (default), PostgreSQL (optional) |
 | Frontend | React 19, TypeScript, Vite, Tailwind CSS 4 |
-| Quality | pytest, Vitest, Ruff, oxlint, GitHub Actions |
+| Quality | pytest, Vitest, Ruff, oxlint, Husky git hooks |
 
 ---
 
@@ -107,7 +107,7 @@ Agentic RAG over annual-report PDFs. Python backend, React frontend, everything 
 | Mock data | **ReportLab** | generates realistic mock annual reports |
 | Eval | custom harness in `backend/evals/` | naive vs hybrid vs agentic |
 | Package managers | **uv**, **npm** | Python and JS dependencies |
-| CI | **GitHub Actions** | lint, tests, build on every push |
+| Git hooks | **Husky** | lint and type-check before commit, tests and build before push |
 | Containers | **Docker**, Docker Compose | optional Postgres and Qdrant |
 
 ---

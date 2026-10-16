@@ -23,7 +23,7 @@
 | LLM | Groq free tier (default), Gemini (fallback), Ollama (local), behind one provider interface |
 | Evals | Custom question set and scoring script |
 | Frontend | React + Vite + Tailwind (Vercel) |
-| Ops | Docker Compose, GitHub Actions, pytest, ruff |
+| Ops | Docker Compose, Husky git hooks, pytest, ruff |
 
 Backend, Qdrant and Postgres need a host other than Vercel (Render/Fly + Qdrant Cloud free tier).
 
@@ -98,7 +98,7 @@ Start with 3-5 companies (e.g. TCS, Infosys, Reliance), 3 years each. File namin
 - [x] SSE streaming of answer and agent steps
 - [x] Auth (JWT), chat sessions, history, conversation memory
 - [x] Rate limiting, provider fallback
-- [x] pytest: unit and API integration tests; CI
+- [x] pytest: unit and API integration tests; git hooks
 
 ### Phase 6: Frontend (done)
 - [x] Chat UI with streaming and an agent-steps panel

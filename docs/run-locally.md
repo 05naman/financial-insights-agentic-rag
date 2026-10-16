@@ -107,6 +107,12 @@ If you ingested reports before the primary-statement tagging existed, tag them o
 cd backend && uv run python -m app.cli retag
 ```
 
+## Git hooks (optional, Husky)
+From the project root, run `npm install` once. Then:
+- before each **commit**: `ruff` (backend) and `oxlint` + `tsc` (frontend), only for the folders you changed
+- before each **push**: backend tests, frontend tests and build
+- skip once with `git commit --no-verify`
+
 ## Reset everything
 ```bash
 rm -rf backend/data        # database, search index, downloaded models

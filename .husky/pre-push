@@ -1,0 +1,4 @@
+echo "pre-push: backend tests"
+(cd backend && uv run pytest -q) || exit 1
+echo "pre-push: frontend tests and build"
+(cd frontend && npm test --silent && npm run build --silent) || exit 1

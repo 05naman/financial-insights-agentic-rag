@@ -1,0 +1,11 @@
+staged=$(git diff --cached --name-only)
+
+if echo "$staged" | grep -q '^backend/'; then
+  echo "pre-commit: backend (ruff)"
+  (cd backend && uv run ruff check . && uv run ruff format --check .) || exit 1
+fi
+
+if echo "$staged" | grep -q '^frontend/'; then
+  echo "pre-commit: frontend (oxlint, tsc)"
+  (cd frontend && npm run lint --silent && npx tsc -b) || exit 1
+fi
