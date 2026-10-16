@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---------- Design tokens: "paper" (light) and "ink" (dark) ----------
+   To re-theme, change only the --primary*, --accent* and (dark) background values below. */
+:root {
+  --bg: #f6f3ec;
+  --surface: #fbf9f4;
+  --raised: #ffffff;
+  --ink: #1b1a17;
+  --muted: #6b675d;
+  --faint: #9a958a;
+  --line: #e2ddd0;
+  --line-strong: #cfc8b6;
+  --primary: #1f3a5f;
+  --primary-ink: #ffffff;
+  --primary-soft: #e5ebf3;
+  --accent: #c97a12;
+  --accent-ink: #8a4f06;
+  --accent-soft: #f8ebd3;
+  --danger: #b84a32;
+  --danger-soft: #f6e3dd;
+  --ok: #2f6f9f;
+  --shadow: 0 1px 0 rgb(27 26 23 / 0.04), 0 8px 24px -12px rgb(27 26 23 / 0.18);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0e1218;
+  --surface: #131923;
+  --raised: #1a2230;
+  --ink: #e8e5da;
+  --muted: #9aa3b0;
+  --faint: #6d7788;
+  --line: #232c3a;
+  --line-strong: #334054;
+  --primary: #8db3ea;
+  --primary-ink: #0e1218;
+  --primary-soft: #172840;
+  --accent: #f2a33a;
+  --accent-ink: #f2a33a;
+  --accent-soft: #3a2a10;
+  --danger: #e07a5f;
+  --danger-soft: #3a1f18;
+  --ok: #6fa8dc;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 12px 28px -14px rgb(0 0 0 / 0.7);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ok: var(--ok);
+  --font-serif: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --shadow-card: var(--shadow);
+}
+
+/* ---------- Base ---------- */
+html {
+  background: var(--bg);
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* ---------- Motion ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(350%);
+  }
+}
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.sheet-in {
+  animation: sheet-in 0.25s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--line) 25%, var(--surface) 50%, var(--line) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: 6px;
+}
+.pulse-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+.indeterminate::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 30%;
+  background: var(--primary);
+  border-radius: 999px;
+  animation: slide 1.3s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Answer typography ("research note") ---------- */
+.note-prose {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-variation-settings: "opsz" 18;
+}
+.note-prose h1,
+.note-prose h2,
+.note-prose h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 1.4em 0 0.5em;
+  letter-spacing: -0.01em;
+}
+.note-prose h1 {
+  font-size: 1.5rem;
+}
+.note-prose h2 {
+  font-size: 1.25rem;
+}
+.note-prose h3 {
+  font-size: 1.1rem;
+}
+.note-prose p {
+  margin: 0.7em 0;
+}
+.note-prose ul,
+.note-prose ol {
+  margin: 0.7em 0;
+  padding-left: 1.3em;
+}
+.note-prose ul {
+  list-style: none;
+}
+.note-prose ul > li {
+  position: relative;
+}
+.note-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1em;
+  top: 0.78em;
+  width: 0.45em;
+  height: 1.5px;
+  background: var(--accent);
+}
+.note-prose ol {
+  list-style: decimal;
+}
+.note-prose li {
+  margin: 0.35em 0;
+}
+.note-prose strong {
+  font-weight: 600;
+}
+.note-prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.4em 0;
+}
+.note-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--primary-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* a table wider than its box scrolls sideways: fade the edge that has more, and keep the scrollbar visible */
+.scroll-hint {
+  background:
+    linear-gradient(to right, var(--surface) 30%, transparent) left center / 24px 100% no-repeat local,
+    linear-gradient(to left, var(--surface) 30%, transparent) right center / 24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / 0.14), transparent) left center / 10px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / 0.14), transparent) right center / 10px 100% no-repeat scroll;
+  background-color: var(--surface);
+  scrollbar-width: auto;
+  scrollbar-color: var(--line-strong) var(--line);
+}

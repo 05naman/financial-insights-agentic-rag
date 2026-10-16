@@ -1,0 +1,60 @@
+# ===== Secrets: never commit =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ===== Project data (regenerated or downloaded locally) =====
+# PDFs, SQLite db, Qdrant index, downloaded models
+data/
+*.db
+*.sqlite
+*.sqlite3
+# half-uploaded PDFs
+*.part
+# eval run outputs (copy a good run into docs/ to keep it)
+backend/evals/results/*
+!backend/evals/results/.gitkeep
+
+# ===== Python =====
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ===== Node / frontend =====
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.tsbuildinfo
+*.local
+coverage/
+
+# ===== Browser test output =====
+test-results/
+playwright-report/
+
+# ===== Logs =====
+*.log
+logs/
+npm-debug.log*
+
+# ===== Editors and OS =====
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.suo
+
+# Keep tracked (do NOT ignore): uv.lock, package-lock.json, .env.example

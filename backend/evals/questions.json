@@ -1,0 +1,1994 @@
+[
+  {
+    "id": "single_fact-01",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was Bharat Infotech Limited's revenue from operations in FY2024?",
+    "expected_contains": [
+      [
+        "1,89,866"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-02",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was the profit after tax of Bharat Infotech Limited in FY2023?",
+    "expected_contains": [
+      [
+        "32,912"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "single_fact-03",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How many employees did Bharat Infotech Limited have as on March 31, 2024?",
+    "expected_contains": [
+      [
+        "3,22,920"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          2
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-04",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What dividend per share did Bharat Infotech Limited recommend for FY2024?",
+    "expected_contains": [
+      [
+        "29.7"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-05",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What were the total assets of Bharat Infotech Limited as at March 31, 2024?",
+    "expected_contains": [
+      [
+        "1,86,186"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-06",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How much cash and cash equivalents did Bharat Infotech Limited hold at the end of FY2023?",
+    "expected_contains": [
+      [
+        "20,832"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "multi_year-01",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "calculation",
+    "question": "By what percentage did Bharat Infotech Limited's revenue grow from FY2023 to FY2024?",
+    "expected_contains": [
+      [
+        "8.6",
+        "8.5"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-02",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Bharat Infotech Limited's revenue in FY2022 and in FY2024?",
+    "expected_contains": [
+      [
+        "1,56,940"
+      ],
+      [
+        "1,89,866"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-03",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Bharat Infotech Limited's pre-tax margin in FY2022, FY2023 and FY2024?",
+    "expected_contains": [
+      [
+        "25.2"
+      ],
+      [
+        "24.9"
+      ],
+      [
+        "24.8"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-01",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was the compound annual growth rate of Bharat Infotech Limited's revenue between FY2022 and FY2024?",
+    "expected_contains": [
+      [
+        "10.0",
+        "9.9"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-02",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Bharat Infotech Limited's net profit margin (profit after tax as a percentage of revenue from operations) in FY2024?",
+    "expected_contains": [
+      [
+        "18.6",
+        "18.6"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-03",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Bharat Infotech Limited's debt-to-equity ratio (borrowings divided by total equity) at March 31, 2024?",
+    "expected_contains": [
+      [
+        "0.07",
+        "0.06"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "segments-01",
+    "category": "segments",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "Which segment contributed the most revenue to Bharat Infotech Limited in FY2024, and how much?",
+    "expected_contains": [
+      [
+        "india and rest of world"
+      ],
+      [
+        "75,911"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-01",
+    "category": "risks",
+    "difficulty": "medium",
+    "reasoning": "summarisation",
+    "question": "What are the key risks mentioned by Bharat Infotech Limited in its FY2024 report?",
+    "expected_contains": [
+      [
+        "attrition"
+      ],
+      [
+        "currency"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-02",
+    "category": "risks",
+    "difficulty": "hard",
+    "reasoning": "retrieval across companies",
+    "question": "Which company flags 'attrition of skilled employees' as a risk in its FY2024 report?",
+    "expected_contains": [
+      [
+        "bharatinfotech"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-07",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was Sagar Pharma Limited's revenue from operations in FY2024?",
+    "expected_contains": [
+      [
+        "49,219"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-08",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was the profit after tax of Sagar Pharma Limited in FY2023?",
+    "expected_contains": [
+      [
+        "7,065"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "single_fact-09",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How many employees did Sagar Pharma Limited have as on March 31, 2024?",
+    "expected_contains": [
+      [
+        "42,953"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          2
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-10",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What dividend per share did Sagar Pharma Limited recommend for FY2024?",
+    "expected_contains": [
+      [
+        "25.0"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-11",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What were the total assets of Sagar Pharma Limited as at March 31, 2024?",
+    "expected_contains": [
+      [
+        "43,451"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-12",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How much cash and cash equivalents did Sagar Pharma Limited hold at the end of FY2023?",
+    "expected_contains": [
+      [
+        "4,166"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "multi_year-04",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "calculation",
+    "question": "By what percentage did Sagar Pharma Limited's revenue grow from FY2023 to FY2024?",
+    "expected_contains": [
+      [
+        "12.1",
+        "12.1"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-05",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Sagar Pharma Limited's revenue in FY2022 and in FY2024?",
+    "expected_contains": [
+      [
+        "37,785"
+      ],
+      [
+        "49,219"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-06",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Sagar Pharma Limited's pre-tax margin in FY2022, FY2023 and FY2024?",
+    "expected_contains": [
+      [
+        "20.6"
+      ],
+      [
+        "21.2"
+      ],
+      [
+        "21.9"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-04",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was the compound annual growth rate of Sagar Pharma Limited's revenue between FY2022 and FY2024?",
+    "expected_contains": [
+      [
+        "14.1",
+        "14.1"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-05",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Sagar Pharma Limited's net profit margin (profit after tax as a percentage of revenue from operations) in FY2024?",
+    "expected_contains": [
+      [
+        "16.4",
+        "16.4"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-06",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Sagar Pharma Limited's debt-to-equity ratio (borrowings divided by total equity) at March 31, 2024?",
+    "expected_contains": [
+      [
+        "0.08",
+        "0.07"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "segments-02",
+    "category": "segments",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "Which segment contributed the most revenue to Sagar Pharma Limited in FY2024, and how much?",
+    "expected_contains": [
+      [
+        "formulations"
+      ],
+      [
+        "21,722"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-03",
+    "category": "risks",
+    "difficulty": "medium",
+    "reasoning": "summarisation",
+    "question": "What are the key risks mentioned by Sagar Pharma Limited in its FY2024 report?",
+    "expected_contains": [
+      [
+        "regulatory"
+      ],
+      [
+        "price"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-04",
+    "category": "risks",
+    "difficulty": "hard",
+    "reasoning": "retrieval across companies",
+    "question": "Which company flags 'regulatory action by us fda' as a risk in its FY2024 report?",
+    "expected_contains": [
+      [
+        "sagarpharma"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-13",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was Navbharat Motors Limited's revenue from operations in FY2024?",
+    "expected_contains": [
+      [
+        "82,875"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-14",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What was the profit after tax of Navbharat Motors Limited in FY2023?",
+    "expected_contains": [
+      [
+        "7,300"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "single_fact-15",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How many employees did Navbharat Motors Limited have as on March 31, 2024?",
+    "expected_contains": [
+      [
+        "60,237"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          2
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-16",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What dividend per share did Navbharat Motors Limited recommend for FY2024?",
+    "expected_contains": [
+      [
+        "37.6"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-17",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "What were the total assets of Navbharat Motors Limited as at March 31, 2024?",
+    "expected_contains": [
+      [
+        "43,519"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "single_fact-18",
+    "category": "single_fact",
+    "difficulty": "easy",
+    "reasoning": "lookup",
+    "question": "How much cash and cash equivalents did Navbharat Motors Limited hold at the end of FY2023?",
+    "expected_contains": [
+      [
+        "9,380"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "multi_year-07",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "calculation",
+    "question": "By what percentage did Navbharat Motors Limited's revenue grow from FY2023 to FY2024?",
+    "expected_contains": [
+      [
+        "7.4",
+        "7.3"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-08",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Navbharat Motors Limited's revenue in FY2022 and in FY2024?",
+    "expected_contains": [
+      [
+        "63,720"
+      ],
+      [
+        "82,875"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_year-09",
+    "category": "multi_year",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "What was Navbharat Motors Limited's pre-tax margin in FY2022, FY2023 and FY2024?",
+    "expected_contains": [
+      [
+        "11.0"
+      ],
+      [
+        "12.5"
+      ],
+      [
+        "12.9"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-07",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was the compound annual growth rate of Navbharat Motors Limited's revenue between FY2022 and FY2024?",
+    "expected_contains": [
+      [
+        "14.0",
+        "14.0"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2022
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-08",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Navbharat Motors Limited's net profit margin (profit after tax as a percentage of revenue from operations) in FY2024?",
+    "expected_contains": [
+      [
+        "9.8",
+        "9.8"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "calculation-09",
+    "category": "calculation",
+    "difficulty": "hard",
+    "reasoning": "calculation",
+    "question": "What was Navbharat Motors Limited's debt-to-equity ratio (borrowings divided by total equity) at March 31, 2024?",
+    "expected_contains": [
+      [
+        "0.11",
+        "0.11"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          6
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "segments-03",
+    "category": "segments",
+    "difficulty": "medium",
+    "reasoning": "aggregation",
+    "question": "Which segment contributed the most revenue to Navbharat Motors Limited in FY2024, and how much?",
+    "expected_contains": [
+      [
+        "spare parts and services"
+      ],
+      [
+        "30,643"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-05",
+    "category": "risks",
+    "difficulty": "medium",
+    "reasoning": "summarisation",
+    "question": "What are the key risks mentioned by Navbharat Motors Limited in its FY2024 report?",
+    "expected_contains": [
+      [
+        "semiconductor"
+      ],
+      [
+        "transition"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "risks-06",
+    "category": "risks",
+    "difficulty": "hard",
+    "reasoning": "retrieval across companies",
+    "question": "Which company flags 'semiconductor supply disruption' as a risk in its FY2024 report?",
+    "expected_contains": [
+      [
+        "navbharatmotors"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          4
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "paraphrase-01",
+    "category": "paraphrase",
+    "difficulty": "medium",
+    "reasoning": "lookup",
+    "question": "What was the turnover of Bharat Infotech in FY2024?",
+    "expected_contains": [
+      [
+        "1,89,866"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "paraphrase-02",
+    "category": "paraphrase",
+    "difficulty": "medium",
+    "reasoning": "lookup",
+    "question": "What was Sagar Pharma's net profit for the year ended March 2023?",
+    "expected_contains": [
+      [
+        "7,065"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "paraphrase-03",
+    "category": "paraphrase",
+    "difficulty": "medium",
+    "reasoning": "lookup",
+    "question": "What was the head count at Navbharat Motors in March 2024?",
+    "expected_contains": [
+      [
+        "60,237"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          2
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_company-01",
+    "category": "multi_company",
+    "difficulty": "medium",
+    "reasoning": "comparison",
+    "question": "Compare the FY2024 profit after tax of Bharat Infotech Limited and Sagar Pharma Limited.",
+    "expected_contains": [
+      [
+        "35,391"
+      ],
+      [
+        "8,096"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_company-02",
+    "category": "multi_company",
+    "difficulty": "medium",
+    "reasoning": "comparison",
+    "question": "Compare the FY2024 profit after tax of Sagar Pharma Limited and Navbharat Motors Limited.",
+    "expected_contains": [
+      [
+        "8,096"
+      ],
+      [
+        "8,130"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_company-03",
+    "category": "multi_company",
+    "difficulty": "medium",
+    "reasoning": "comparison",
+    "question": "Compare the FY2024 profit after tax of Bharat Infotech Limited and Navbharat Motors Limited.",
+    "expected_contains": [
+      [
+        "35,391"
+      ],
+      [
+        "8,130"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_company-04",
+    "category": "multi_company",
+    "difficulty": "hard",
+    "reasoning": "comparison",
+    "question": "Which of the three companies had the highest revenue growth in FY2024 over FY2023?",
+    "expected_contains": [
+      [
+        "sagarpharma"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023,
+        "pages": [
+          3,
+          5
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2023
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "multi_company-05",
+    "category": "multi_company",
+    "difficulty": "hard",
+    "reasoning": "comparison",
+    "question": "Which company had the highest pre-tax margin in FY2024?",
+    "expected_contains": [
+      [
+        "bharatinfotech"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      },
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "follow_up-01",
+    "category": "follow_up",
+    "difficulty": "hard",
+    "reasoning": "conversation memory",
+    "question": "And what was it in FY2023?",
+    "history": [
+      {
+        "role": "user",
+        "content": "What was Bharat Infotech's revenue from operations in FY2024?"
+      },
+      {
+        "role": "assistant",
+        "content": "Rs 1,89,866 crore [BHIT FY2024 p.3]."
+      }
+    ],
+    "expected_contains": [
+      [
+        "1,74,831"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023,
+        "pages": [
+          2,
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "BHIT",
+        "fiscal_year": 2023
+      }
+    ]
+  },
+  {
+    "id": "follow_up-02",
+    "category": "follow_up",
+    "difficulty": "hard",
+    "reasoning": "conversation memory",
+    "question": "How about their employee count?",
+    "history": [
+      {
+        "role": "user",
+        "content": "What was Sagar Pharma's profit after tax in FY2024?"
+      },
+      {
+        "role": "assistant",
+        "content": "Rs 8,096 crore [SAGR FY2024 p.3]."
+      }
+    ],
+    "expected_contains": [
+      [
+        "42,953"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024,
+        "pages": [
+          2
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "SAGR",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "follow_up-03",
+    "category": "follow_up",
+    "difficulty": "hard",
+    "reasoning": "conversation memory",
+    "question": "Now do the same for Navbharat Motors.",
+    "history": [
+      {
+        "role": "user",
+        "content": "What was Bharat Infotech's profit after tax in FY2024?"
+      },
+      {
+        "role": "assistant",
+        "content": "Rs 35,391 crore [BHIT FY2024 p.3]."
+      }
+    ],
+    "expected_contains": [
+      [
+        "8,130"
+      ]
+    ],
+    "gold": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024,
+        "pages": [
+          3,
+          5
+        ]
+      }
+    ],
+    "expected_sources": [
+      {
+        "ticker": "NAVM",
+        "fiscal_year": 2024
+      }
+    ]
+  },
+  {
+    "id": "unanswerable-01",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "What will Bharat Infotech's revenue be in FY2026?",
+    "unanswerable": true
+  },
+  {
+    "id": "unanswerable-02",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "What is the current share price of Sagar Pharma?",
+    "unanswerable": true
+  },
+  {
+    "id": "unanswerable-03",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "What was Infosys's revenue in FY2024?",
+    "unanswerable": true
+  },
+  {
+    "id": "unanswerable-04",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "Should I buy Navbharat Motors shares?",
+    "unanswerable": true
+  },
+  {
+    "id": "unanswerable-05",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "What was the salary of the Managing Director of Sagar Pharma in FY2024?",
+    "unanswerable": true
+  },
+  {
+    "id": "unanswerable-06",
+    "category": "unanswerable",
+    "difficulty": "medium",
+    "reasoning": "refusal",
+    "question": "What was Bharat Infotech's revenue in FY2025?",
+    "unanswerable": true
+  }
+]

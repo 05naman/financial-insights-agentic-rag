@@ -1,0 +1,96 @@
+{
+ "report": "HDFCBANK_FY2025",
+ "note": "a BANK: no 'revenue from operations'. Answer keys: deposits p.8/15/38, dividend p.12/207, gross NPA p.8/15",
+ "cases": [
+  {
+   "group": "literal",
+   "question": "HDFC Bank total deposits FY2025",
+   "expect": "27,14,715"
+  },
+  {
+   "group": "literal",
+   "question": "HDFC Bank advances FY2025",
+   "expect": "26,19,609"
+  },
+  {
+   "group": "literal",
+   "question": "HDFC Bank total balance sheet size FY2025",
+   "expect": "39,10,199"
+  },
+  {
+   "group": "literal",
+   "question": "HDFC Bank dividend per equity share FY2025",
+   "expect": "recommended a dividend"
+  },
+  {
+   "group": "literal",
+   "question": "HDFC Bank gross NPA ratio FY2025",
+   "expect": "1.33"
+  },
+  {
+   "group": "synonyms",
+   "question": "how much money do customers keep with HDFC Bank",
+   "expect": "27,14,715"
+  },
+  {
+   "group": "synonyms",
+   "question": "loans given out by HDFC Bank",
+   "expect": "26,19,609"
+  },
+  {
+   "group": "synonyms",
+   "question": "HDFC Bank bad loans ratio",
+   "expect": "1.33"
+  },
+  {
+   "group": "synonyms",
+   "question": "HDFC Bank payout to shareholders per share",
+   "expect": "recommended a dividend"
+  },
+  {
+   "group": "typos",
+   "question": "depsits HDFC Bank FY25",
+   "expect": "27,14,715"
+  },
+  {
+   "group": "typos",
+   "question": "divident HDFC Bank FY2025",
+   "expect": "recommended a dividend"
+  },
+  {
+   "group": "typos",
+   "question": "gros NPA HDFC Bank",
+   "expect": "1.33"
+  },
+  {
+   "group": "exact_figures",
+   "question": "27,14,715",
+   "expect": "27,14,715"
+  },
+  {
+   "group": "exact_figures",
+   "question": "26,19,609",
+   "expect": "26,19,609"
+  },
+  {
+   "group": "exact_figures",
+   "question": "39,10,199",
+   "expect": "39,10,199"
+  },
+  {
+   "group": "held_out",
+   "question": "money held on behalf of depositors by HDFC Bank",
+   "expect": "27,14,715"
+  },
+  {
+   "group": "held_out",
+   "question": "credit extended to borrowers by HDFC Bank",
+   "expect": "26,19,609"
+  },
+  {
+   "group": "held_out",
+   "question": "what HDFC Bank returns to owners per share",
+   "expect": "recommended a dividend"
+  }
+ ]
+}

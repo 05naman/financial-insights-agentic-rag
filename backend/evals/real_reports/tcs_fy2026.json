@@ -1,0 +1,156 @@
+{
+ "report": "TCS_FY2026",
+ "note": "answer keys read from the filing: consolidated P&L p.167, standalone P&L p.253, dividend p.238",
+ "cases": [
+  {
+   "group": "literal",
+   "question": "TCS consolidated revenue from operations FY2026",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "literal",
+   "question": "TCS profit for the year FY2026",
+   "expect": "49,454"
+  },
+  {
+   "group": "literal",
+   "question": "total income TCS FY2026",
+   "expect": "2,71,423"
+  },
+  {
+   "group": "literal",
+   "question": "employee benefit expenses TCS",
+   "expect": "1,54,994"
+  },
+  {
+   "group": "literal",
+   "question": "profit before tax TCS 2025-26",
+   "expect": "65,487"
+  },
+  {
+   "group": "literal",
+   "question": "total tax expense TCS FY26",
+   "expect": "16,033"
+  },
+  {
+   "group": "literal",
+   "question": "standalone revenue from operations TCS",
+   "expect": "2,20,938"
+  },
+  {
+   "group": "literal",
+   "question": "final dividend per equity share TCS",
+   "expect": "final dividend"
+  },
+  {
+   "group": "synonyms",
+   "question": "turnover of Tata Consultancy Services in the latest year",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "synonyms",
+   "question": "how much money did TCS earn after paying taxes",
+   "expect": "49,454"
+  },
+  {
+   "group": "synonyms",
+   "question": "net income TCS FY2026",
+   "expect": "49,454"
+  },
+  {
+   "group": "synonyms",
+   "question": "bottom line TCS FY2026",
+   "expect": "49,454"
+  },
+  {
+   "group": "synonyms",
+   "question": "how much did TCS spend on its employees",
+   "expect": "1,54,994"
+  },
+  {
+   "group": "synonyms",
+   "question": "total sales TCS FY2026",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "typos",
+   "question": "revnue of tcs FY26",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "typos",
+   "question": "proft for the year TCS",
+   "expect": "49,454"
+  },
+  {
+   "group": "typos",
+   "question": "divident per share TCS",
+   "expect": "final dividend"
+  },
+  {
+   "group": "exact_figures",
+   "question": "2,67,021",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "exact_figures",
+   "question": "49,454",
+   "expect": "49,454"
+  },
+  {
+   "group": "exact_figures",
+   "question": "2,71,423",
+   "expect": "2,71,423"
+  },
+  {
+   "group": "exact_figures",
+   "question": "65,487",
+   "expect": "65,487"
+  },
+  {
+   "group": "exact_figures",
+   "question": "16,033",
+   "expect": "16,033"
+  },
+  {
+   "group": "exact_figures",
+   "question": "1,54,994",
+   "expect": "1,54,994"
+  },
+  {
+   "group": "chatty",
+   "question": "I am thinking of investing in TCS. Roughly how big did the business get in the year ended March 2026?",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "chatty",
+   "question": "what did TCS earn at the end after all costs and taxes for FY2026?",
+   "expect": "49,454"
+  },
+  {
+   "group": "held_out",
+   "question": "gross receipts of TCS FY2026",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "held_out",
+   "question": "surplus left after expenses and tax at TCS",
+   "expect": "49,454"
+  },
+  {
+   "group": "held_out",
+   "question": "income generated from selling services by TCS",
+   "expect": "2,67,021"
+  },
+  {
+   "group": "held_out",
+   "question": "TCS payout to owners per share",
+   "expect": "final dividend"
+  },
+  {
+   "group": "held_out",
+   "question": "what TCS paid its people in total",
+   "expect": "1,54,994"
+  }
+ ]
+}

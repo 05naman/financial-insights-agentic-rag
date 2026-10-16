@@ -1,0 +1,131 @@
+{
+ "report": "INFY_FY2026",
+ "note": "answer keys from the filing: consolidated P&L p.287, dividend p.36/243, employees p.143",
+ "cases": [
+  {
+   "group": "literal",
+   "question": "Infosys consolidated revenue from operations FY2026",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "literal",
+   "question": "Infosys profit for the year FY2026",
+   "expect": "29,474"
+  },
+  {
+   "group": "literal",
+   "question": "total income Infosys FY2026",
+   "expect": "1,82,972"
+  },
+  {
+   "group": "literal",
+   "question": "employee benefit expenses Infosys",
+   "expect": "95,094"
+  },
+  {
+   "group": "literal",
+   "question": "profit before tax Infosys 2025-26",
+   "expect": "39,995"
+  },
+  {
+   "group": "literal",
+   "question": "final dividend per equity share Infosys",
+   "expect": "final dividend"
+  },
+  {
+   "group": "literal",
+   "question": "total number of employees Infosys FY2026",
+   "expect": "3,52,095"
+  },
+  {
+   "group": "synonyms",
+   "question": "turnover of Infosys Limited in the latest year",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "synonyms",
+   "question": "how much money did Infosys earn after paying taxes",
+   "expect": "29,474"
+  },
+  {
+   "group": "synonyms",
+   "question": "net income Infosys FY2026",
+   "expect": "29,474"
+  },
+  {
+   "group": "synonyms",
+   "question": "total sales Infosys FY2026",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "synonyms",
+   "question": "how much did Infosys spend on its employees",
+   "expect": "95,094"
+  },
+  {
+   "group": "synonyms",
+   "question": "workforce size of Infosys",
+   "expect": "3,52,095"
+  },
+  {
+   "group": "typos",
+   "question": "revnue of infosys FY26",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "typos",
+   "question": "proft for the year Infosys",
+   "expect": "29,474"
+  },
+  {
+   "group": "typos",
+   "question": "divident per share Infosys",
+   "expect": "final dividend"
+  },
+  {
+   "group": "exact_figures",
+   "question": "1,78,650",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "exact_figures",
+   "question": "29,474",
+   "expect": "29,474"
+  },
+  {
+   "group": "exact_figures",
+   "question": "1,82,972",
+   "expect": "1,82,972"
+  },
+  {
+   "group": "exact_figures",
+   "question": "39,995",
+   "expect": "39,995"
+  },
+  {
+   "group": "exact_figures",
+   "question": "95,094",
+   "expect": "95,094"
+  },
+  {
+   "group": "held_out",
+   "question": "gross receipts of Infosys FY2026",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "held_out",
+   "question": "surplus left after expenses and tax at Infosys",
+   "expect": "29,474"
+  },
+  {
+   "group": "held_out",
+   "question": "income generated from selling services by Infosys",
+   "expect": "1,78,650"
+  },
+  {
+   "group": "held_out",
+   "question": "Infosys payout to owners per share",
+   "expect": "final dividend"
+  }
+ ]
+}
