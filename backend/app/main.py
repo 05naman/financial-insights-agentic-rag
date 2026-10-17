@@ -36,7 +36,17 @@ async def lifespan(_: FastAPI):
     yield
 
 
-app = FastAPI(title=settings.app_name, lifespan=lifespan)
+def docs_urls(environment: str) -> dict[str, str | None]:
+    """The API map is for developers: served locally, hidden on a deployed server."""
+    on = environment == "local"
+    return {
+        "docs_url": "/docs" if on else None,
+        "redoc_url": "/redoc" if on else None,
+        "openapi_url": "/openapi.json" if on else None,
+    }
+
+
+app = FastAPI(title=settings.app_name, lifespan=lifespan, **docs_urls(settings.environment))
 
 
 @app.middleware("http")

@@ -46,7 +46,7 @@ uv run python -m app.cli ingest --dir ../data/pdfs
 uv run uvicorn app.main:app --reload
 ```
 - API: http://localhost:8000
-- Interactive docs: http://localhost:8000/docs
+- Interactive docs: http://localhost:8000/docs (only when `ENVIRONMENT=local`; hidden on a deployed server)
 - Health check: http://localhost:8000/health
 
 ### 5. Start the frontend (new terminal)

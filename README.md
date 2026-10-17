@@ -13,8 +13,8 @@ Share of questions where the right page is in the top 6, plain hybrid search vs 
 
 | Test | Plain | Improved |
 |---|---|---|
-| Mock reports, 246 stress queries | 89% | **99%** |
-| Real TCS report, 30 questions | 60% | **90%** |
+| Mock reports, 246 stress queries | 85% | **98%** |
+| Real TCS report, 30 questions | 33% | **87%** |
 | Real Infosys report | 32% | **92%** |
 | Real HDFC Bank report | 39% | **61%** |
 
@@ -41,10 +41,10 @@ Free keys: [Groq](https://console.groq.com/keys), [Gemini](https://aistudio.goog
 1. Built the full pipeline: ingestion, hybrid search, agent, API, UI, auth.
 2. Wrote an eval set with known answers, scored by plain code (no LLM judge).
 3. Stress-tested search with 246 queries: typos, year formats, exact figures, held-out wording.
-4. Kept only fixes that each proved their worth: company name in every passage, comma-free numbers, typo correction, auto company/year detection (89% → 99%).
+4. Kept only fixes that each proved their worth: company name in every passage, comma-free numbers, typo correction, auto company/year detection (85% → 98%).
 5. Dropped what didn't help: reranker, synonym list, tiny-chunk removal.
-6. Real reports exposed new problems: notes outranked the financial statements (TCS 60%).
-7. Tagged primary statements and boosted them on money questions (TCS 90%, Infosys 92%).
+6. Real reports exposed new problems: notes outranked the financial statements (TCS 33%).
+7. Tagged primary statements and boosted them on money questions (TCS 87%, Infosys 92%).
 8. Repaired real-PDF text: spaced numbers, broken bold, rupee sign, split words.
 9. Hardened the LLM layer: model chain, retries, quota fail-fast, token budgets.
 10. Added answer checks (numbers and citations must appear in sources), error handling, and safe logging.

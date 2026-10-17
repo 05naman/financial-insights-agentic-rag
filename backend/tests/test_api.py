@@ -258,3 +258,10 @@ def test_old_empty_sessions_are_purged_but_recent_and_used_ones_stay(client):
 
     remaining = asyncio.run(ids())
     assert old_empty not in remaining and len(remaining) == 1
+
+
+def test_health_deps_reports_database_and_index_for_a_logged_in_user(client):
+    h = auth(client)
+    r = client.get("/health/deps", headers=h)
+    assert r.status_code == 200
+    assert r.json() == {"database": "ok", "search_index_passages": 0, "search_index": "ok"}
