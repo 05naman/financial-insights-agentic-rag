@@ -25,3 +25,4 @@ dist-ssr
 
 # Vercel local link
 .vercel
+.env.local
