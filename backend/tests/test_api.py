@@ -265,3 +265,15 @@ def test_health_deps_reports_database_and_index_for_a_logged_in_user(client):
     r = client.get("/health/deps", headers=h)
     assert r.status_code == 200
     assert r.json() == {"database": "ok", "search_index_passages": 0, "search_index": "ok"}
+
+
+def test_database_url_from_neon_is_made_asyncpg_friendly():
+    from app.db.session import normalize_database_url
+
+    neon = "postgresql://user:pw@ep-x.ap-south-1.aws.neon.tech/db?sslmode=require&channel_binding=require"
+    assert normalize_database_url(neon) == (
+        "postgresql+asyncpg://user:pw@ep-x.ap-south-1.aws.neon.tech/db?ssl=require"
+    )
+    assert normalize_database_url("postgres://u:p@h/db").startswith("postgresql+asyncpg://u:p@h/db")
+    sqlite = "sqlite+aiosqlite:///./data/app.db"
+    assert normalize_database_url(sqlite) == sqlite

@@ -1,0 +1,584 @@
+[
+ {
+  "id": "tcs-01",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's consolidated revenue from operations in FY2026?",
+  "expected_contains": [
+   [
+    "2,67,021"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-02",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's profit for the year in FY2026?",
+  "expected_contains": [
+   [
+    "49,454"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-03",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's total income in FY2026?",
+  "expected_contains": [
+   [
+    "2,71,423"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-04",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "How much did TCS spend on employee benefits in FY2026?",
+  "expected_contains": [
+   [
+    "1,54,994"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-05",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's profit before tax in FY2026?",
+  "expected_contains": [
+   [
+    "65,487"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-06",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's total tax expense in FY2026?",
+  "expected_contains": [
+   [
+    "16,033"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-07",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was TCS's standalone revenue from operations in FY2026?",
+  "expected_contains": [
+   [
+    "2,20,938"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-08",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What was the turnover of Tata Consultancy Services in the latest year?",
+  "expected_contains": [
+   [
+    "2,67,021"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-09",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "How much money did TCS earn after paying taxes in FY2026?",
+  "expected_contains": [
+   [
+    "49,454"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-10",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What was the bottom line for TCS in FY2026?",
+  "expected_contains": [
+   [
+    "49,454"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-11",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What did TCS pay its people in total in FY2026?",
+  "expected_contains": [
+   [
+    "1,54,994"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-12",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What were the gross receipts of TCS in FY2026?",
+  "expected_contains": [
+   [
+    "2,67,021"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-13",
+  "set": "answerable",
+  "category": "calculation",
+  "question": "What was TCS's net profit margin in FY2026 (profit for the year as a percentage of revenue from operations)?",
+  "expected_contains": [
+   [
+    "18.5",
+    "18.52",
+    "18.51"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "tcs-14",
+  "set": "answerable",
+  "category": "calculation",
+  "question": "What share of TCS's revenue from operations in FY2026 went to employee benefit expenses, in percent?",
+  "expected_contains": [
+   [
+    "58.0",
+    "58.05",
+    "58.04",
+    "58.1"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "TCS",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-15",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was Infosys's consolidated revenue from operations in FY2026?",
+  "expected_contains": [
+   [
+    "1,78,650"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-16",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was Infosys's profit for the year in FY2026?",
+  "expected_contains": [
+   [
+    "29,474"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-17",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was Infosys's total income in FY2026?",
+  "expected_contains": [
+   [
+    "1,82,972"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-18",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "How much did Infosys spend on employee benefits in FY2026?",
+  "expected_contains": [
+   [
+    "95,094"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-19",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was Infosys's profit before tax in FY2026?",
+  "expected_contains": [
+   [
+    "39,995"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-20",
+  "set": "answerable",
+  "category": "single_fact",
+  "question": "What was the total number of employees at Infosys in FY2026?",
+  "expected_contains": [
+   [
+    "3,52,095"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-21",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What was the turnover of Infosys Limited in the latest year?",
+  "expected_contains": [
+   [
+    "1,78,650"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-22",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "How much money did Infosys earn after paying taxes in FY2026?",
+  "expected_contains": [
+   [
+    "29,474"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-23",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What is the workforce size of Infosys?",
+  "expected_contains": [
+   [
+    "3,52,095"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-24",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "How much did Infosys spend on its employees in FY2026?",
+  "expected_contains": [
+   [
+    "95,094"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-25",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What was the net income of Infosys in FY2026?",
+  "expected_contains": [
+   [
+    "29,474"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-26",
+  "set": "answerable",
+  "category": "paraphrase",
+  "question": "What were the gross receipts of Infosys in FY2026?",
+  "expected_contains": [
+   [
+    "1,78,650"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-27",
+  "set": "answerable",
+  "category": "calculation",
+  "question": "What was Infosys's net profit margin in FY2026 (profit for the year as a percentage of revenue from operations)?",
+  "expected_contains": [
+   [
+    "16.5",
+    "16.50",
+    "16.49"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "infy-28",
+  "set": "answerable",
+  "category": "calculation",
+  "question": "What share of Infosys's revenue from operations in FY2026 went to employee benefit expenses, in percent?",
+  "expected_contains": [
+   [
+    "53.2",
+    "53.23",
+    "53.22",
+    "53.1"
+   ]
+  ],
+  "expected_sources": [
+   {
+    "ticker": "INFY",
+    "fiscal_year": 2026
+   }
+  ]
+ },
+ {
+  "id": "un-01",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What will TCS's revenue from operations be in FY2028?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-02",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What is TCS's share price today?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-03",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What was Wipro's revenue from operations in FY2026?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-04",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What was TCS's revenue from operations in FY2019?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-05",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "Should I buy Infosys shares?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-06",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What dividend will Infosys declare next year?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-07",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What was HDFC Bank's total deposits in FY2026?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-08",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "How does TCS's revenue compare with Accenture's revenue in FY2026?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-09",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What is the current market capitalisation of Infosys?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-10",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "Which Indian IT company will have the highest profit in 2030?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-11",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "What are Reliance Industries' total borrowings in FY2025?",
+  "expected_contains": [],
+  "unanswerable": true
+ },
+ {
+  "id": "un-12",
+  "set": "unanswerable",
+  "category": "unanswerable",
+  "question": "How much did TCS spend on its Chennai office cafeteria in FY2026?",
+  "expected_contains": [],
+  "unanswerable": true
+ }
+]
