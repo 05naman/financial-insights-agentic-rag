@@ -58,7 +58,3 @@ Thumbs.db
 *.suo
 
 # Keep tracked (do NOT ignore): uv.lock, package-lock.json, .env.example
-
-# built by backend/scripts/prepare_deploy.sh for the Docker image
-backend/deploy/qdrant/
-backend/deploy/models/
