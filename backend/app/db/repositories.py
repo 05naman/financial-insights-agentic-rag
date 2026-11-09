@@ -3,7 +3,14 @@ from datetime import UTC, datetime, timedelta
 from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import ChatMessage, ChatSession, Document, DocumentStatus, User
+from app.db.models import (
+    ChatMessage,
+    ChatSession,
+    Document,
+    DocumentStatus,
+    RefreshToken,
+    User,
+)
 
 
 class DocumentRepository:
@@ -84,6 +91,46 @@ class UserRepository:
         self.session.add(user)
         await self.session.commit()
         return user
+
+
+class RefreshTokenRepository:
+    def __init__(self, session: AsyncSession):
+        self.session = session
+
+    async def create(
+        self, user_id: int, token_hash: str, family_id: str, expires_at: datetime
+    ) -> RefreshToken:
+        row = RefreshToken(
+            user_id=user_id, token_hash=token_hash, family_id=family_id, expires_at=expires_at
+        )
+        self.session.add(row)
+        await self.session.commit()
+        return row
+
+    async def get_by_hash(self, token_hash: str) -> RefreshToken | None:
+        result = await self.session.execute(
+            select(RefreshToken).where(RefreshToken.token_hash == token_hash)
+        )
+        return result.scalar_one_or_none()
+
+    async def mark_used(self, row: RefreshToken) -> None:
+        row.used_at = datetime.now(UTC)
+        await self.session.commit()
+
+    async def revoke_family(self, family_id: str) -> None:
+        await self.session.execute(
+            update(RefreshToken)
+            .where(RefreshToken.family_id == family_id, RefreshToken.revoked_at.is_(None))
+            .values(revoked_at=datetime.now(UTC))
+        )
+        await self.session.commit()
+
+    async def purge_expired(self) -> int:
+        result = await self.session.execute(
+            delete(RefreshToken).where(RefreshToken.expires_at < datetime.now(UTC))
+        )
+        await self.session.commit()
+        return result.rowcount or 0
 
 
 class ChatRepository:

@@ -21,7 +21,13 @@ class Settings(BaseSettings):
     qdrant_collection: str = "annual_reports"
 
     jwt_secret: str = DEFAULT_JWT_SECRET
-    jwt_expire_minutes: int = 60 * 24
+    jwt_expire_minutes: int = (
+        15  # short-lived access token; the refresh cookie keeps the user signed in
+    )
+    refresh_token_days: int = 7
+    # "lax" works when the site and the API share a registrable domain (localhost). A frontend and an
+    # API on different domains (Vercel + Cloud Run) need COOKIE_SAMESITE=none (cookies are Secure then).
+    cookie_samesite: str = "lax"
     rate_limit_per_minute: int = 20
     auth_rate_limit_per_minute: int = 10
     max_pdf_pages: int = 800

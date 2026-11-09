@@ -73,3 +73,12 @@ container.py  wires concrete components (the only place that knows them all)
 - The number check is lexical: it catches invented figures, not wrong reasoning over correct figures.
 - Rate limiting and ingestion locking are in-process; scaling to several workers needs Redis and a job queue (deliberately left out to keep the project simple).
 - Tables are created with `create_all`; a real deployment should add Alembic migrations.
+
+## Authentication (access + refresh tokens)
+
+- **Access token:** a JWT valid for 15 minutes, sent as `Authorization: Bearer`. The frontend keeps it in memory only.
+- **Refresh token:** a random value in an HttpOnly, Secure (outside local) cookie scoped to `/auth`. JavaScript cannot read it. Only its SHA-256 hash is stored (`refresh_tokens` table).
+- **Rotation:** every refresh issues a new refresh token and marks the old one used. A used token that comes back later (beyond a 10-second leeway for two tabs refreshing at once) revokes the whole family: sign in again.
+- **Logout:** `POST /auth/logout` revokes the family, so signing out really ends the session.
+- **CSRF:** `/auth/refresh` and `/auth/logout` require an `X-Requested-With` header, which another site cannot send without a CORS pre-flight that only our frontend passes.
+- **Different domains:** a frontend and API on different registrable domains need `COOKIE_SAMESITE=none`, and some browsers block such third-party cookies. Serve both under one domain, or proxy `/auth` through the frontend host.

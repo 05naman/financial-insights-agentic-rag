@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { AgentStep, FinalAnswer } from '../types'
 import { streamAnswer } from './chat'
-import { ApiError } from './client'
+import { ApiError, tokenStore } from './client'
 
 /** A fetch Response whose body arrives in the exact pieces given (to test events split across chunks). */
 function sse(chunks: string[], status = 200) {
@@ -74,5 +74,30 @@ describe('streamAnswer', () => {
     const spy = vi.spyOn(globalThis, 'fetch')
     await expect(streamAnswer(1, 'q', 'agentic', { onStep() {}, onFinal() {} }, c.signal)).rejects.toBeInstanceOf(ApiError)
     expect(spy).not.toHaveBeenCalled()
+  })
+})
+
+describe('streamAnswer token refresh', () => {
+  it('renews an expired access token and asks again once', async () => {
+    tokenStore.set('old')
+    const auths: string[] = []
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (url, init) => {
+      if (String(url).endsWith('/auth/refresh')) {
+        return new Response(JSON.stringify({ access_token: 'new', token_type: 'bearer' }), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        })
+      }
+      const auth = new Headers(init?.headers).get('Authorization') ?? ''
+      auths.push(auth)
+      return auth === 'Bearer new'
+        ? sse([final])
+        : new Response(JSON.stringify({ detail: 'Not authenticated' }), { status: 401 })
+    })
+    const finals: FinalAnswer[] = []
+    await streamAnswer(1, 'q?', 'agentic', { onStep: () => {}, onFinal: (f) => finals.push(f) })
+    expect(auths).toEqual(['Bearer old', 'Bearer new'])
+    expect(finals).toHaveLength(1)
+    tokenStore.clear()
   })
 })

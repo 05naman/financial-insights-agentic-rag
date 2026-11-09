@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { ApiError, UNAUTHORIZED_EVENT, describeError, request, tokenStore } from './client'
+import { ApiError, UNAUTHORIZED_EVENT, describeError, refreshSession, request, tokenStore } from './client'
 
 /** Awaits a promise that must reject and returns the error. */
 async function fail(p: Promise<unknown>): Promise<ApiError> {
@@ -106,5 +106,89 @@ describe('describeError', () => {
     expect(describeError(new Error('plain'))).toBe('plain')
     expect(describeError('weird', 'fallback')).toBe('fallback')
     expect(describeError(undefined)).toMatch(/something went wrong/i)
+  })
+})
+
+describe('access token refresh', () => {
+  const refreshed = (token = 'new-token') => json(200, { access_token: token, token_type: 'bearer' })
+
+  it('an expired access token is renewed from the refresh cookie and the call is retried once', async () => {
+    tokenStore.set('old')
+    const seen: string[] = []
+    const spy = vi.fn()
+    window.addEventListener(UNAUTHORIZED_EVENT, spy)
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (url, init) => {
+      if (String(url).endsWith('/auth/refresh')) {
+        expect(init?.credentials).toBe('include')
+        expect(new Headers(init?.headers).get('X-Requested-With')).toBe('fetch')
+        return refreshed()
+      }
+      const auth = new Headers(init?.headers).get('Authorization') ?? ''
+      seen.push(auth)
+      return auth === 'Bearer new-token' ? json(200, { ok: true }) : json(401, { detail: 'Not authenticated' })
+    })
+    expect(await request('/documents')).toEqual({ ok: true })
+    window.removeEventListener(UNAUTHORIZED_EVENT, spy)
+    expect(seen).toEqual(['Bearer old', 'Bearer new-token'])
+    expect(tokenStore.get()).toBe('new-token')
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('calls that fail together share a single refresh', async () => {
+    tokenStore.set('old')
+    let refreshCalls = 0
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (url, init) => {
+      if (String(url).endsWith('/auth/refresh')) {
+        refreshCalls++
+        return refreshed()
+      }
+      return new Headers(init?.headers).get('Authorization') === 'Bearer new-token'
+        ? json(200, {})
+        : json(401, { detail: 'x' })
+    })
+    await Promise.all([request('/a'), request('/b'), request('/c')])
+    expect(refreshCalls).toBe(1)
+  })
+
+  it('a second 401 after a refresh signs the user out instead of looping', async () => {
+    tokenStore.set('old')
+    const spy = vi.fn()
+    window.addEventListener(UNAUTHORIZED_EVENT, spy)
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (url) =>
+      String(url).endsWith('/auth/refresh') ? refreshed() : json(401, { detail: 'x' }),
+    )
+    const e = await fail(request('/documents'))
+    window.removeEventListener(UNAUTHORIZED_EVENT, spy)
+    expect(e.kind).toBe('unauthorized')
+    expect(tokenStore.get()).toBeNull()
+    expect(spy).toHaveBeenCalledOnce()
+  })
+
+  it('an unreachable server during a refresh does not sign the user out', async () => {
+    tokenStore.set('old')
+    const spy = vi.fn()
+    window.addEventListener(UNAUTHORIZED_EVENT, spy)
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (url) => {
+      if (String(url).endsWith('/auth/refresh')) throw new TypeError('Failed to fetch')
+      return json(401, { detail: 'x' })
+    })
+    const e = await fail(request('/documents'))
+    window.removeEventListener(UNAUTHORIZED_EVENT, spy)
+    expect(e.kind).toBe('network')
+    expect(tokenStore.hasSession()).toBe(true)
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('refreshSession reports a rejected cookie as denied', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(json(401, { detail: 'Session expired' }))
+    expect(await refreshSession()).toBe('denied')
+  })
+
+  it('the access token is held in memory and only a flag is stored', () => {
+    tokenStore.set('secret-token')
+    expect(localStorage.getItem('fi_session')).toBe('1')
+    expect(JSON.stringify({ ...localStorage })).not.toContain('secret-token')
+    tokenStore.clear()
+    expect(tokenStore.hasSession()).toBe(false)
   })
 })

@@ -1,5 +1,14 @@
 import type { AgentStep, ChatMessage, FinalAnswer, Mode, Session } from '../types'
-import { ApiError, UNAUTHORIZED_EVENT, apiUrl, errorFromResponse, networkError, request, tokenStore } from './client'
+import {
+  ApiError,
+  UNAUTHORIZED_EVENT,
+  apiUrl,
+  errorFromResponse,
+  networkError,
+  refreshSession,
+  request,
+  tokenStore,
+} from './client'
 
 export const listSessions = () => request<Session[]>('/chat/sessions')
 export const createSession = (signal?: AbortSignal) =>
@@ -39,19 +48,23 @@ export async function streamAnswer(
 
   try {
     if (signal?.aborted) throw new ApiError('aborted', 'Stopped.')
-    let res: Response
-    try {
-      res = await fetch(apiUrl(`/chat/sessions/${sessionId}/stream`), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${tokenStore.get() ?? ''}` },
-        body: JSON.stringify({ question, mode }),
-        signal: controller.signal,
-      })
-    } catch {
-      if (signal?.aborted) throw new ApiError('aborted', 'Stopped.')
-      if (idle) throw new ApiError('timeout', 'The server took too long to respond. Please try again.')
-      throw networkError()
+    const open = async (): Promise<Response> => {
+      try {
+        return await fetch(apiUrl(`/chat/sessions/${sessionId}/stream`), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${tokenStore.get() ?? ''}` },
+          body: JSON.stringify({ question, mode }),
+          signal: controller.signal,
+        })
+      } catch {
+        if (signal?.aborted) throw new ApiError('aborted', 'Stopped.')
+        if (idle) throw new ApiError('timeout', 'The server took too long to respond. Please try again.')
+        throw networkError()
+      }
     }
+    let res = await open()
+    // the access token lasts minutes: renew it from the refresh cookie and ask again once
+    if (res.status === 401 && (await refreshSession()) === 'ok') res = await open()
     if (!res.ok || !res.body) {
       const err = await errorFromResponse(res)
       if (err.kind === 'unauthorized') {

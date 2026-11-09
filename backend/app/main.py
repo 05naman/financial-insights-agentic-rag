@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from app.api import auth, chat, documents, health, llm
 from app.core.config import DEFAULT_JWT_SECRET, get_settings
 from app.core.logging import register_secrets, request_id_var, setup_logging
-from app.db.repositories import DocumentRepository
+from app.db.repositories import DocumentRepository, RefreshTokenRepository
 from app.db.session import get_sessionmaker, init_db
 from app.llm.base import LLMError
 
@@ -33,6 +33,7 @@ async def lifespan(_: FastAPI):
         n = await DocumentRepository(session).fail_stale_processing()
         if n:
             logger.warning("marked %d interrupted ingestion(s) as failed", n)
+        await RefreshTokenRepository(session).purge_expired()
     yield
 
 
@@ -107,6 +108,7 @@ async def llm_error_handler(_: Request, exc: LLMError) -> JSONResponse:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
+    allow_credentials=True,  # the refresh-token cookie
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["X-Request-ID", "Retry-After"],

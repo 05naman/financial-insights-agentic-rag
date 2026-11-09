@@ -15,3 +15,16 @@ export async function register(email: string, password: string) {
 }
 
 export const me = () => request<{ id: number; email: string }>('/auth/me')
+
+/** Ends the sign-in on the server (the refresh token stops working). Best effort: the page signs out anyway. */
+export async function logout() {
+  try {
+    await request(
+      '/auth/logout',
+      { method: 'POST', headers: { 'X-Requested-With': 'fetch' } },
+      { isAuthRequest: true, timeoutMs: 5000 },
+    )
+  } catch {
+    /* offline or already expired: nothing more to do */
+  }
+}

@@ -1,25 +1,37 @@
 const BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
-const TOKEN_KEY = 'fi_token'
+const SESSION_KEY = 'fi_session'
 export const UNAUTHORIZED_EVENT = 'fi:unauthorized'
 
+/**
+ * The short-lived access token lives in memory only (a script injected into the page can't read it from
+ * storage). The long-lived refresh token is an HttpOnly cookie the browser keeps; the page never sees it.
+ * `fi_session` in localStorage is just a "we were signed in" flag, so a reload knows to ask for a new
+ * access token. It is not a secret.
+ */
+let accessToken: string | null = null
+
 export const tokenStore = {
-  get: () => {
-    try {
-      return localStorage.getItem(TOKEN_KEY)
-    } catch {
-      return null
-    }
-  },
+  get: () => accessToken,
   set: (t: string) => {
+    accessToken = t
     try {
-      localStorage.setItem(TOKEN_KEY, t)
+      localStorage.setItem(SESSION_KEY, '1')
     } catch {
       /* storage blocked: the session lasts until reload */
     }
   },
-  clear: () => {
+  /** True when a session probably exists (a refresh cookie may be waiting), even without an access token. */
+  hasSession: () => {
     try {
-      localStorage.removeItem(TOKEN_KEY)
+      return localStorage.getItem(SESSION_KEY) === '1'
+    } catch {
+      return accessToken !== null
+    }
+  },
+  clear: () => {
+    accessToken = null
+    try {
+      localStorage.removeItem(SESSION_KEY)
     } catch {
       /* nothing to clear */
     }
@@ -150,6 +162,43 @@ interface RequestOptions {
   timeoutMs?: number
   signal?: AbortSignal
   isAuthRequest?: boolean
+  /** internal: this call already followed a token refresh, so a second 401 is final */
+  retried?: boolean
+}
+
+let refreshing: Promise<'ok' | 'denied'> | null = null
+
+/**
+ * Trades the refresh cookie for a new access token. Calls made together share one request (the server
+ * rotates the cookie, so two parallel refreshes would race). 'denied' means the session is really over;
+ * a network failure throws, because an unreachable server must not sign the user out.
+ */
+export function refreshSession(): Promise<'ok' | 'denied'> {
+  refreshing ??= doRefresh().finally(() => {
+    refreshing = null
+  })
+  return refreshing
+}
+
+async function doRefresh(): Promise<'ok' | 'denied'> {
+  let res: Response
+  try {
+    res = await fetch(`${BASE}/auth/refresh`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'X-Requested-With': 'fetch' },
+    })
+  } catch {
+    throw networkError()
+  }
+  if (res.ok) {
+    const body = (await res.json().catch(() => null)) as { access_token?: string } | null
+    if (!body?.access_token) return 'denied'
+    tokenStore.set(body.access_token)
+    return 'ok'
+  }
+  if (res.status === 401 || res.status === 403) return 'denied'
+  throw await errorFromResponse(res, { isAuthRequest: true })
 }
 
 export async function request<T>(path: string, init: RequestInit = {}, opts: RequestOptions = {}): Promise<T> {
@@ -170,7 +219,12 @@ export async function request<T>(path: string, init: RequestInit = {}, opts: Req
   try {
     let res: Response
     try {
-      res = await fetch(`${BASE}${path}`, { ...init, headers, signal: controller.signal })
+      res = await fetch(`${BASE}${path}`, {
+        ...init,
+        headers,
+        signal: controller.signal,
+        credentials: path.startsWith('/auth/') ? 'include' : init.credentials, // cookie only for auth routes
+      })
     } catch {
       if (timedOut) throw new ApiError('timeout', 'The server took too long to respond. Please try again.')
       if (opts.signal?.aborted) throw new ApiError('aborted', 'The request was cancelled.')
@@ -179,6 +233,10 @@ export async function request<T>(path: string, init: RequestInit = {}, opts: Req
     if (!res.ok) {
       const err = await errorFromResponse(res, { isAuthRequest: opts.isAuthRequest })
       if (err.kind === 'unauthorized' && !opts.isAuthRequest) {
+        // the access token expired (they last minutes): get a new one from the refresh cookie and retry once
+        if (!opts.retried && (await refreshSession()) === 'ok') {
+          return await request<T>(path, init, { ...opts, retried: true })
+        }
         tokenStore.clear()
         window.dispatchEvent(new Event(UNAUTHORIZED_EVENT))
       }

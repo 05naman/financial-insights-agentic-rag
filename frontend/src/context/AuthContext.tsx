@@ -1,12 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import * as authApi from '../api/auth'
-import { ApiError, UNAUTHORIZED_EVENT, describeError, tokenStore } from '../api/client'
+import { ApiError, UNAUTHORIZED_EVENT, describeError, refreshSession, tokenStore } from '../api/client'
 
 /**
- * loading: checking a saved token
+ * loading: asking the server whether the saved session is still good
  * authed / anon: known state
- * unreachable: we have a token but the server could not be reached, so we must NOT log the user out
+ * unreachable: we think we're signed in but the server could not be reached, so we must NOT log the user out
  */
 type Status = 'loading' | 'authed' | 'anon' | 'unreachable'
 
@@ -27,17 +27,24 @@ const AuthContext = createContext<AuthState | null>(null)
 const EXPIRED = 'Your session has expired. Please sign in again.'
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [status, setStatus] = useState<Status>(() => (tokenStore.get() ? 'loading' : 'anon'))
+  const [status, setStatus] = useState<Status>(() => (tokenStore.hasSession() ? 'loading' : 'anon'))
   const [email, setEmail] = useState<string | null>(null)
   const [notice, setNotice] = useState<string | null>(null)
   const [startupError, setStartupError] = useState<string | null>(null)
 
   const check = useCallback(async () => {
-    if (!tokenStore.get()) {
+    if (!tokenStore.hasSession()) {
       setStatus('anon')
       return
     }
     try {
+      // after a reload the access token (kept in memory) is gone: get a new one from the refresh cookie
+      if (!tokenStore.get() && (await refreshSession()) === 'denied') {
+        tokenStore.clear()
+        setNotice(EXPIRED)
+        setStatus('anon')
+        return
+      }
       const u = await authApi.me()
       setEmail(u.email)
       setStartupError(null)
@@ -89,6 +96,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setStatus('authed')
       },
       signOut: () => {
+        void authApi.logout() // end it on the server too, so the refresh token can't be reused
         tokenStore.clear()
         setEmail(null)
         setNotice(null)

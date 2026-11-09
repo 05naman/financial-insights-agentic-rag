@@ -1,3 +1,5 @@
+import hashlib
+import secrets
 from datetime import UTC, datetime, timedelta
 
 import bcrypt
@@ -45,3 +47,13 @@ def decode_access_token(token: str) -> int | None:
         return int(payload["sub"])
     except (jwt.PyJWTError, KeyError, ValueError):
         return None
+
+
+def new_refresh_token() -> tuple[str, str]:
+    """(raw token for the cookie, hash to store). The raw value is never saved."""
+    raw = secrets.token_urlsafe(48)
+    return raw, hash_token(raw)
+
+
+def hash_token(raw: str) -> str:
+    return hashlib.sha256(raw.encode()).hexdigest()

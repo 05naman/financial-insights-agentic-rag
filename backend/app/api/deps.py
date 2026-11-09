@@ -9,7 +9,12 @@ from app.core.config import get_settings
 from app.core.rate_limit import SlidingWindowLimiter
 from app.core.security import decode_access_token
 from app.db.models import User
-from app.db.repositories import ChatRepository, DocumentRepository, UserRepository
+from app.db.repositories import (
+    ChatRepository,
+    DocumentRepository,
+    RefreshTokenRepository,
+    UserRepository,
+)
 from app.db.session import get_session
 
 SessionDep = Annotated[AsyncSession, Depends(get_session)]
@@ -90,6 +95,11 @@ def users_repo(session: SessionDep) -> UserRepository:
     return UserRepository(session)
 
 
+def refresh_tokens_repo(session: SessionDep) -> RefreshTokenRepository:
+    return RefreshTokenRepository(session)
+
+
 DocumentsRepoDep = Annotated[DocumentRepository, Depends(documents_repo)]
 ChatRepoDep = Annotated[ChatRepository, Depends(chat_repo)]
 UsersRepoDep = Annotated[UserRepository, Depends(users_repo)]
+RefreshTokensRepoDep = Annotated[RefreshTokenRepository, Depends(refresh_tokens_repo)]

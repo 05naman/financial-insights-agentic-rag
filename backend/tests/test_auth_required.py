@@ -8,6 +8,8 @@ PUBLIC = {
     ("GET", "/health"),
     ("POST", "/auth/register"),
     ("POST", "/auth/login"),
+    ("POST", "/auth/refresh"),  # these two run on the refresh cookie, not a bearer token
+    ("POST", "/auth/logout"),
 }
 
 
